@@ -7,7 +7,10 @@
             "Framework\\": "src/Framework",
             "App\\": "src/App",
             "Controllers\\": "src/App/Controllers"
-        }
+        },
+        "files":[
+            "src/App/Config/Routes.php"
+        ]
     },
     "authors": [
         {
