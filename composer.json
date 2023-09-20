@@ -1,0 +1,18 @@
+{
+    "name": "aakash/expiggy",
+    "description": "Expense detector project",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "src/Framework",
+            "App\\": "src/App",
+            "Controllers\\": "src/App/Controllers"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aakash Pavar"
+        }
+    ],
+    "require": {}
+}
