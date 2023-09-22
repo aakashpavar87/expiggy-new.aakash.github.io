@@ -9,7 +9,8 @@
             "Controllers\\": "src/App/Controllers"
         },
         "files":[
-            "src/App/Config/Routes.php"
+            "src/App/Config/Routes.php",
+            "src/App/Config/MiddleWare.php"
         ]
     },
     "authors": [

@@ -8,6 +8,7 @@ namespace Framework;
 //Here we will provide a base path to find template
 class TemplateEngine
 {
+    private array $globalTemplateData = [];
     //This is syntax parameter will create a property of TemplateEngine Class behind the scenes
     public function __construct(private string $basePath)
     {
@@ -16,6 +17,7 @@ class TemplateEngine
     { //We are providing data to our method inorder to forward it to home Template
         //if we want to store all data according its variable than we will use extract function of PHP
         extract($data, EXTR_OVERWRITE);
+        extract($this->globalTemplateData, EXTR_SKIP);
         ob_start();
         include $this->resolve($path);
         $output = ob_get_contents();
@@ -26,5 +28,9 @@ class TemplateEngine
     public function resolve(string $template)
     {
         return "{$this->basePath}/{$template}";
+    }
+    public function addGlobaldata(string $key, mixed $value)
+    {
+        $this->globalTemplateData[$key] = $value;
     }
 }

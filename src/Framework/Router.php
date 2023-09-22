@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Framework;
 
 use App\Controller;
+// use App\Middleware;
 
 class Router
 {
     private array $routes = [];
+    private array $middlewares = [];
     public function add(string $method, string $path, array $controller)
     {
         $path = $this->normalise($path);
@@ -24,8 +26,8 @@ class Router
         $path = "/{$path}/";
         $path = preg_replace("#[/]{2,}#", '/', $path);
         return $path;
-    }
-    public function dispatch(string $path, string $method)
+    } //Here Router Does not have access Container class
+    public function dispatch(string $path, string $method, Container $container = null)
     {
         $path = $this->normalise($path);
         $method = strtoupper($method);
@@ -40,8 +42,21 @@ class Router
             // echo $class;
             // echo "<br>";
             // echo $function;
-            $containerInstance = new $class; //here we dont have to add ()
-            $containerInstance->{$function}();
+            $containerInstance = $container ? $container->resolve($class) : new $class; //here we dont have to add ()
+            $action = fn () => $containerInstance->{$function}();
+
+            foreach ($this->middlewares as $middleware) {
+                $middlewareInstance = $container ? $container->resolve($middleware) : new $middleware;
+                $action = fn () => $middlewareInstance->process($action);
+            }
+
+            $action();
+
+            return;
         }
+    }
+    public function addMiddleware(string $middleware)
+    {
+        $this->middlewares[] = $middleware;
     }
 }

@@ -9,11 +9,12 @@ use App\Config\Paths;
 
 class HomeController
 {
-    private TemplateEngine $view;
-    public function __construct()
+
+    public function __construct(private TemplateEngine $view)
     {
         //For storing all paths we will make a config folder and paths.php file in it
-        $this->view = new TemplateEngine(Paths::VIEW);
+        // $this->view = new TemplateEngine(Paths::VIEW);
+        //We will instantiate this class through container
     }
     public function home()
     {
@@ -22,9 +23,6 @@ class HomeController
         // dd($this->view);
         // $secret = "shhvh";
         //Here render method is returning string output buffer
-        echo $this->view->render("/index.php", [
-            'title' => 'Home Page',
-            'desc' => 'I am Aakash Pavar'
-        ]);
+        echo $this->view->render("/index.php");
     }
 }

@@ -10,11 +10,10 @@ use App\Config\Paths;
 
 class AboutController
 {
-    private TemplateEngine $view;
-    public function __construct()
+    public function __construct(private TemplateEngine $view)
     {
         //For storing all paths we will make a config folder and paths.php file in it
-        $this->view = new TemplateEngine(Paths::VIEW);
+        // $this->view = new TemplateEngine(Paths::VIEW);
     }
     public function about()
     {
