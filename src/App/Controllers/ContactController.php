@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use Framework\TemplateEngine;
-use App\Config\Paths;
 
-class AuthController
+class ContactController
 {
     public function __construct(private TemplateEngine $view)
     {
     }
-    public function registerView()
+    public function contact()
     {
-        $this->view->render('/register.php');
+        echo $this->view->render('contact.php');
     }
 }

@@ -16,7 +16,7 @@ class TemplateEngine
     public function render(string $path, array $data = [])
     { //We are providing data to our method inorder to forward it to home Template
         //if we want to store all data according its variable than we will use extract function of PHP
-        extract($data, EXTR_OVERWRITE);
+        extract($data, EXTR_SKIP);
         extract($this->globalTemplateData, EXTR_SKIP);
         ob_start();
         include $this->resolve($path);
