@@ -1,22 +1,21 @@
 {
-    "name": "aakash/expiggy",
-    "description": "Expense detector project",
-    "type": "project",
-    "autoload": {
-        "psr-4": {
-            "Framework\\": "src/Framework",
-            "App\\": "src/App",
-            "Controllers\\": "src/App/Controllers"
-        },
-        "files":[
-            "src/App/Config/Routes.php",
-            "src/App/Config/MiddleWare.php"
-        ]
+  "name": "luis/phpiggy",
+  "description": "A PHP application for tracking expenses.",
+  "type": "project",
+  "require": {
+    "vlucas/phpdotenv": "^5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "src/Framework",
+      "App\\": "src/App"
     },
-    "authors": [
-        {
-            "name": "Aakash Pavar"
-        }
-    ],
-    "require": {}
+    "files": [
+      "src/App/Config/Routes.php",
+      "src/App/Config/Middleware.php"
+    ]
+  },
+  "scripts": {
+    "phpiggy": "php cli.php"
+  }
 }

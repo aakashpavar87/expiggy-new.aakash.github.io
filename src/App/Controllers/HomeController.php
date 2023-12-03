@@ -2,27 +2,57 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers; //This means Controller is exist in App Folder
+namespace App\Controllers;
 
 use Framework\TemplateEngine;
-use App\Config\Paths;
+use App\Services\TransactionService;
 
 class HomeController
 {
+  public function __construct(
+    private TemplateEngine $view,
+    private TransactionService $transactionService
+  ) {
+  }
 
-    public function __construct(private TemplateEngine $view)
-    {
-        //For storing all paths we will make a config folder and paths.php file in it
-        // $this->view = new TemplateEngine(Paths::VIEW);
-        //We will instantiate this class through container
-    }
-    public function home()
-    {
-        // echo "Home page is Runnig";
-        // var_dump($this->view);
-        // dd($this->view);
-        // $secret = "shhvh";
-        //Here render method is returning string output buffer
-        echo $this->view->render("/index.php");
-    }
+  public function home()
+  {
+    $page = $_GET['p'] ?? 1;
+    $page = (int) $page;
+    $length = 3;
+    $offset = ($page - 1) * $length;
+    $searchTerm = $_GET['s'] ?? null;
+
+    [$transactions, $count] = $this->transactionService->getUserTransactions(
+      $length,
+      $offset
+    );
+
+    $lastPage = ceil($count / $length);
+    $pages = $lastPage ? range(1, $lastPage) : [];
+
+    $pageLinks = array_map(
+      fn ($pageNum) => http_build_query([
+        'p' => $pageNum,
+        's' => $searchTerm
+      ]),
+      $pages
+    );
+
+    echo $this->view->render("index.php", [
+      'transactions' => $transactions,
+      'currentPage' => $page,
+      'previousPageQuery' => http_build_query([
+        'p' => $page - 1,
+        's' => $searchTerm
+      ]),
+      'lastPage' => $lastPage,
+      'nextPageQuery' => http_build_query([
+        'p' => $page + 1,
+        's' => $searchTerm
+      ]),
+      'pageLinks' => $pageLinks,
+      'searchTerm' => $searchTerm
+    ]);
+  }
 }

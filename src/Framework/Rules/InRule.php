@@ -8,12 +8,13 @@ use Framework\Contracts\RuleInterface;
 
 class InRule implements RuleInterface
 {
-    public function validate(array $formData, string $field, array $params): bool
-    {
-        return in_array($formData[$field], $params);
-    }
-    public function getMessage(array $formData, string $field, array $params): string
-    {
-        return "Invalid Selection";
-    }
+  public function validate(array $data, string $field, array $params): bool
+  {
+    return in_array($data[$field], $params);
+  }
+
+  public function getMessage(array $data, string $field, array $params): string
+  {
+    return "Invalid selection";
+  }
 }

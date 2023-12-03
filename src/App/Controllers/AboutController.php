@@ -7,19 +7,17 @@ namespace App\Controllers;
 use Framework\TemplateEngine;
 use App\Config\Paths;
 
-
 class AboutController
 {
-    public function __construct(private TemplateEngine $view)
-    {
-        //For storing all paths we will make a config folder and paths.php file in it
-        // $this->view = new TemplateEngine(Paths::VIEW);
-    }
-    public function about()
-    {
-        echo $this->view->render('/about.php', [
-            'title' => "About Page",
-            'dangerous' => '<script>alert(123)</script>'
-        ]);
-    }
+  public function __construct(private TemplateEngine $view)
+  {
+  }
+
+  public function about()
+  {
+    echo $this->view->render('about.php', [
+      'title' => 'About',
+      'dangerousData' => '<script>alert(123)</script>'
+    ]);
+  }
 }

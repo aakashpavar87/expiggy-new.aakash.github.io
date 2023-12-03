@@ -1,6 +1,6 @@
 <!-- Footer -->
 <footer class="container mx-auto my-12 text-center">
-    &copy; EXPiggy
+  &copy; PHPiggy
 </footer>
 <!-- End Footer -->
 </body>
