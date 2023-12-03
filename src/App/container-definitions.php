@@ -17,7 +17,7 @@ return [
   Database::class => fn () => new Database($_ENV['DB_DRIVER'], [
     'host' => $_ENV['DB_HOST'],
     'port' => $_ENV['DB_PORT'],
-    'dbname' => $_ENV['DB_NAME']
+    'dbname' => $_ENV['DB_DBNAME']
   ], $_ENV['DB_USER'], $_ENV['DB_PASS']),
   UserService::class => function (Container $container) {
     $db = $container->get(Database::class);

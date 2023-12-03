@@ -1,5 +1,5 @@
 {
-  "name": "luis/phpiggy",
+  "name": "aakashpavar/expiggy",
   "description": "A PHP application for tracking expenses.",
   "type": "project",
   "require": {
@@ -16,6 +16,6 @@
     ]
   },
   "scripts": {
-    "phpiggy": "php cli.php"
+    "expiggy": "php cli.php"
   }
 }

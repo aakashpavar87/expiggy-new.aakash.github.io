@@ -29,8 +29,20 @@
       <span class="text-gray-700">Country</span>
       <select name="country" class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
         <option value="USA">USA</option>
-        <option value="Canada" <?php echo $oldFormData['country'] === 'Canada' ? 'selected' : ''; ?>>Canada</option>
-        <option value="Mexico" <?php echo $oldFormData['country'] === 'Mexico' ? 'selected' : ''; ?>>Mexico</option>
+        <option value="Canada" <?php
+                                if (array_key_exists('country', $oldFormData)) {
+                                  echo $oldFormData['country'] === 'Canada' ? 'selected' : '';
+                                } else {
+                                  echo "";
+                                }
+                                ?>>Canada</option>
+        <option value="Mexico" <?php
+                                if (array_key_exists('country', $oldFormData)) {
+                                  echo $oldFormData['country'] === 'Mexico' ? 'selected' : '';
+                                } else {
+                                  echo "";
+                                }
+                                ?>>Mexico</option>
         <option value="Invalid">Invalid Country</option>
       </select>
       <?php if (array_key_exists('country', $errors)) : ?>
