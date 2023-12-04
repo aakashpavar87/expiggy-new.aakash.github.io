@@ -36,6 +36,13 @@
                                   echo "";
                                 }
                                 ?>>Canada</option>
+        <option value="India" <?php
+                              if (array_key_exists('country', $oldFormData)) {
+                                echo $oldFormData['country'] === 'India' ? 'selected' : '';
+                              } else {
+                                echo "";
+                              }
+                              ?>>India</option>
         <option value="Mexico" <?php
                                 if (array_key_exists('country', $oldFormData)) {
                                   echo $oldFormData['country'] === 'Mexico' ? 'selected' : '';
