@@ -41,7 +41,7 @@ class ValidatorService
     $this->validator->validate($formData, [
       'email' => ['required', 'email'],
       'age' => ['required', 'min:18'],
-      'country' => ['required', 'in:USA,India,Canada,Mexico'],
+      'country' => ['required', 'in:USA,Canada,Mexico'],
       'socialMediaURL' => ['required', 'url'],
       'password' => ['required'],
       'confirmPassword' => ['required', 'match:password'],

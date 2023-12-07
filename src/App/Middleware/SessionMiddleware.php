@@ -22,7 +22,7 @@ class SessionMiddleware implements MiddlewareInterface
     session_set_cookie_params([
       'secure' => $_ENV['APP_ENV'] === "production",
       'httponly' => true,
-      'samesite' => 'lax' //To stop sending cookies to another site
+      'samesite' => 'lax'
     ]);
 
     session_start();
