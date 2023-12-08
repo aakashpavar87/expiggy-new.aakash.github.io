@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-require __DIR__ . "/../../vendor/autoload.php";
+#require __DIR__ . "/../../vendor/autoload.php";
+require "/home/1179415.cloudwaysapps.com/cudqrnzbzn/public_html/vendor/autoload.php";
 
 use Framework\App;
 use App\Config\Paths;
