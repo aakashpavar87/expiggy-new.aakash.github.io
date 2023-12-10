@@ -1,8 +1,10 @@
 # expiggy
  # My PHP Application
-![Project Demo](first-gif.gif)
 
-![Project Demo](second-gif.gif)
+
+![first-gif](https://github.com/aakashpavar87/expiggy-new.aakash.github.io/assets/124806811/91ee265e-5031-4892-ba1f-a8b5a2561b44)
+
+![second-gif](https://github.com/aakashpavar87/expiggy-new.aakash.github.io/assets/124806811/d1b9ef2b-0693-48ef-b782-67325085f4d3)
 
 This repository contains a PHP application that utilizes Composer for managing dependencies. Follow the steps below to set up and run the application.
 
